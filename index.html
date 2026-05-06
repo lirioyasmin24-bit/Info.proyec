@@ -5,108 +5,37 @@
 <title>VYTS Store</title>
 
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#f4f6f9;
-}
+body {margin:0;font-family:Arial;background:#f4f6f9;}
+header {background:linear-gradient(90deg,#0d1b2a,#b3001b);color:white;text-align:center;padding:20px;}
+header img {width:90px;border-radius:50%;}
+nav {display:flex;justify-content:space-between;padding:10px;background:#1b263b;color:white;}
+nav input {padding:8px;border-radius:6px;border:none;}
+.categories{text-align:center;padding:10px;}
+.categories button{margin:5px;padding:8px 12px;border:none;border-radius:20px;background:#b3001b;color:white;cursor:pointer;}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;padding:20px;}
+.card{background:white;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.1);overflow:hidden;}
+.card img{width:100%;height:150px;object-fit:cover;}
+.card-content{padding:10px;}
+.price{color:green;font-weight:bold;}
+.actions{display:flex;justify-content:space-between;padding:10px;}
+.cart-btn{background:#0d1b2a;color:white;border:none;padding:5px 10px;border-radius:5px;}
+.heart{border:none;background:none;font-size:18px;cursor:pointer;}
+.offer{background:#ffcc00;text-align:center;padding:10px;font-weight:bold;}
 
-header{
-  background: linear-gradient(90deg,#0d1b2a,#b3001b);
-  color:white;
-  text-align:center;
-  padding:20px;
+/* CARRITO */
+.cart-panel{
+position:fixed;
+right:-300px;
+top:0;
+width:300px;
+height:100%;
+background:white;
+box-shadow:-3px 0 10px rgba(0,0,0,0.2);
+padding:15px;
+transition:0.3s;
+overflow:auto;
 }
-
-header img{
-  width:100px;
-  border-radius:50%;
-}
-
-nav{
-  display:flex;
-  justify-content:space-between;
-  padding:10px;
-  background:#1b263b;
-  color:white;
-}
-
-nav input{
-  padding:8px;
-  border-radius:6px;
-  border:none;
-}
-
-.categories{
-  text-align:center;
-  padding:10px;
-}
-
-.categories button{
-  margin:5px;
-  padding:8px 12px;
-  border:none;
-  border-radius:20px;
-  background:#b3001b;
-  color:white;
-  cursor:pointer;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:20px;
-  padding:20px;
-}
-
-.card{
-  background:white;
-  border-radius:12px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-  overflow:hidden;
-}
-
-.card img{
-  width:100%;
-  height:150px;
-  object-fit:cover;
-}
-
-.card-content{
-  padding:10px;
-}
-
-.price{
-  color:green;
-  font-weight:bold;
-}
-
-.actions{
-  display:flex;
-  justify-content:space-between;
-  padding:10px;
-}
-
-.cart-btn{
-  background:#0d1b2a;
-  color:white;
-  border:none;
-  padding:5px 10px;
-  border-radius:5px;
-}
-
-.heart{
-  border:none;
-  background:none;
-  font-size:18px;
-}
-
-.offer{
-  background:#ffcc00;
-  text-align:center;
-  padding:10px;
-  font-weight:bold;
-}
+.cart-panel.active{right:0;}
 </style>
 
 </head>
@@ -116,14 +45,13 @@ nav input{
 <header>
 <img src="logo.png">
 <h1>VYTS STORE</h1>
-<p>Conecta • Protege • Soluciona</p>
 </header>
 
-<div class="offer">🔥 OFERTAS HASTA 30% 🔥</div>
+<div class="offer">🔥 OFERTAS 🔥</div>
 
 <nav>
-<input type="text" id="search" placeholder="Buscar producto...">
-<div>🛒 <span id="cartCount">0</span></div>
+<input type="text" id="search" placeholder="Buscar...">
+<div onclick="toggleCart()">🛒 (<span id="cartCount">0</span>)</div>
 </nav>
 
 <div class="categories">
@@ -136,113 +64,98 @@ nav input{
 
 <div class="products" id="products">
 
-<!-- LAPTOP -->
 <div class="card" data-cat="laptops">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<img src="https://picsum.photos/300?random=1">
 <div class="card-content">
-<h3>Laptop HP 15</h3>
-<p>Marca: HP</p>
-<p class="price">L. 12,500</p>
+<h3>Laptop HP</h3>
+<p class="price">L.12,500</p>
 </div>
 <div class="actions">
-<button class="cart-btn" onclick="addCart()">Agregar</button>
-<button class="heart" onclick="fav(this)">🤍</button>
-</div>
-</div>
-
-<div class="card" data-cat="laptops">
-<img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed">
-<div class="card-content">
-<h3>Lenovo IdeaPad 3</h3>
-<p>Marca: Lenovo</p>
-<p class="price">L. 14,000</p>
-</div>
-<div class="actions">
-<button class="cart-btn" onclick="addCart()">Agregar</button>
-<button class="heart" onclick="fav(this)">🤍</button>
-</div>
-</div>
-
-<!-- AUDIFONOS -->
-<div class="card" data-cat="audio">
-<img src="https://images.unsplash.com/photo-1518441317763-489f0eb41f9d">
-<div class="card-content">
-<h3>JBL Tune 510BT</h3>
-<p>Marca: JBL</p>
-<p class="price">L. 1,500</p>
-</div>
-<div class="actions">
-<button class="cart-btn" onclick="addCart()">Agregar</button>
+<button class="cart-btn" onclick="addCart('Laptop HP',12500)">Agregar</button>
 <button class="heart" onclick="fav(this)">🤍</button>
 </div>
 </div>
 
 <div class="card" data-cat="audio">
-<img src="https://images.unsplash.com/photo-1585386959984-a41552262b9c">
+<img src="https://picsum.photos/300?random=2">
 <div class="card-content">
-<h3>Sony WH-CH520</h3>
-<p>Marca: Sony</p>
-<p class="price">L. 1,800</p>
+<h3>Audífonos JBL</h3>
+<p class="price">L.1,500</p>
 </div>
 <div class="actions">
-<button class="cart-btn" onclick="addCart()">Agregar</button>
+<button class="cart-btn" onclick="addCart('JBL',1500)">Agregar</button>
 <button class="heart" onclick="fav(this)">🤍</button>
 </div>
 </div>
 
-<!-- TECLADOS -->
 <div class="card" data-cat="teclados">
-<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+<img src="https://picsum.photos/300?random=3">
 <div class="card-content">
-<h3>Logitech K120</h3>
-<p>Marca: Logitech</p>
-<p class="price">L. 450</p>
+<h3>Teclado Logitech</h3>
+<p class="price">L.450</p>
 </div>
 <div class="actions">
-<button class="cart-btn" onclick="addCart()">Agregar</button>
+<button class="cart-btn" onclick="addCart('Teclado',450)">Agregar</button>
 <button class="heart" onclick="fav(this)">🤍</button>
 </div>
 </div>
 
-<!-- CAMARA -->
 <div class="card" data-cat="camaras">
-<img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32">
+<img src="https://picsum.photos/300?random=4">
 <div class="card-content">
-<h3>Canon EOS Rebel T7</h3>
-<p class="price">L. 14,500</p>
+<h3>Cámara Canon</h3>
+<p class="price">L.14,500</p>
 </div>
 <div class="actions">
-<button class="cart-btn" onclick="addCart()">Agregar</button>
+<button class="cart-btn" onclick="addCart('Camara',14500)">Agregar</button>
 <button class="heart" onclick="fav(this)">🤍</button>
 </div>
 </div>
 
+</div>
+
+<!-- CARRITO -->
+<div class="cart-panel" id="cartPanel">
+<h2>Carrito</h2>
+<ul id="cartItems"></ul>
+<h3>Total: L.<span id="total">0</span></h3>
 </div>
 
 <script>
-let cart = 0;
+let cartCount=0;
+let total=0;
 
-function addCart(){
-  cart++;
-  document.getElementById("cartCount").innerText = cart;
+function addCart(name,price){
+cartCount++;
+total+=price;
+
+document.getElementById("cartCount").innerText=cartCount;
+document.getElementById("total").innerText=total;
+
+let li=document.createElement("li");
+li.innerText=name+" - L."+price;
+document.getElementById("cartItems").appendChild(li);
 }
 
 function fav(btn){
-  btn.innerText = "❤️";
+btn.innerText="❤️";
+}
+
+function toggleCart(){
+document.getElementById("cartPanel").classList.toggle("active");
 }
 
 function filter(cat){
-  let cards = document.querySelectorAll(".card");
-  cards.forEach(c=>{
-    c.style.display = (cat==="all" || c.dataset.cat===cat) ? "block" : "none";
-  });
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=(cat==="all"||c.dataset.cat===cat)?"block":"none";
+});
 }
 
-document.getElementById("search").addEventListener("input", function(){
-  let val = this.value.toLowerCase();
-  document.querySelectorAll(".card").forEach(c=>{
-    c.style.display = c.innerText.toLowerCase().includes(val) ? "block" : "none";
-  });
+document.getElementById("search").addEventListener("input",function(){
+let val=this.value.toLowerCase();
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(val)?"block":"none";
+});
 });
 </script>
 
