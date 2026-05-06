@@ -6,247 +6,250 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0b0f1a, #1a1f35, #8b0000);
-  color: white;
+body{
+  margin:0;
+  font-family:'Segoe UI';
+  background: radial-gradient(circle,#1a1f35,#0b0f1a);
+  color:white;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 30px;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
+/* HERO */
+.hero{
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.hero img{width:160px;}
+.hero h1{font-size:60px;margin:10px;}
+.hero p{color:#aaa}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+  background:#000a;
+  position:sticky;
+  top:0;
+}
+input{
+  padding:8px;
+  border-radius:8px;
+  border:none;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: #6cf;
+/* GRID */
+.container{padding:20px;}
+.section-title{
+  border-left:4px solid #6cf;
+  padding-left:10px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  background:#ffffff0a;
+  border-radius:15px;
+  padding:15px;
+  text-align:center;
+}
+.card img{
+  width:100%;
+  height:130px;
+  object-fit:contain;
 }
 
-input {
-  padding: 8px;
-  border-radius: 8px;
-  border: none;
-  width: 250px;
+/* BOTONES */
+button{
+  background:#6cf;
+  border:none;
+  padding:8px;
+  margin:5px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-.container {
-  padding: 20px;
+/* PANEL */
+.panel{
+  position:fixed;
+  top:0;
+  width:300px;
+  height:100%;
+  background:#111;
+  padding:15px;
+  overflow:auto;
+  display:none;
 }
+#cart{right:0;}
+#favs{left:0;}
 
-.section-title {
-  font-size: 26px;
-  margin: 20px 0;
-  border-bottom: 2px solid #6cf;
-  display: inline-block;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
-  gap: 20px;
-}
-
-.card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  padding: 15px;
-  text-align: center;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card img {
-  width: 100%;
-  height: 130px;
-  object-fit: contain;
-}
-
-.price {
-  font-size: 18px;
-  margin: 5px 0;
-}
-
-.discount {
-  color: #ff4d4d;
-  font-size: 14px;
-}
-
-button {
-  background: #6cf;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 5px;
-}
-
-button:hover {
-  background: #4ac;
-}
-
-.cart {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background: #111;
-  padding: 15px;
-  display: none;
-  overflow-y: auto;
-}
-
-.cart h2 {
-  margin-top: 0;
-}
-
-.cart-item {
-  border-bottom: 1px solid #444;
-  margin-bottom: 10px;
-}
-
-.offer {
-  background: linear-gradient(90deg,#ff0000,#007bff);
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  margin-bottom: 20px;
+.offer{
+  background:linear-gradient(90deg,#ff0000,#007bff);
+  padding:15px;
+  text-align:center;
+  margin:10px;
+  border-radius:10px;
 }
 </style>
 </head>
 
 <body>
 
+<div class="hero">
+  <img src="logo.png">
+  <h1>VYTS</h1>
+  <p>Conecta. Protege. Soluciona.</p>
+</div>
+
 <header>
-  <div class="logo">VYTS Store</div>
   <input type="text" id="search" placeholder="Buscar productos...">
-  <button onclick="toggleCart()">🛒</button>
+  <div>
+    <button onclick="toggleFavPanel()">❤️</button>
+    <button onclick="toggleCart()">🛒</button>
+  </div>
 </header>
 
+<div class="offer">🔥 Ofertas exclusivas hasta 20% 🔥</div>
+
 <div class="container">
+  <h2 class="section-title">Computadoras</h2>
+  <div class="grid" id="computadoras"></div>
 
-<div class="offer">
-  🔥 OFERTAS EXCLUSIVAS - Hasta 20% OFF 🔥
+  <h2 class="section-title">Audífonos</h2>
+  <div class="grid" id="audio"></div>
+
+  <h2 class="section-title">Teclados</h2>
+  <div class="grid" id="teclados"></div>
+
+  <h2 class="section-title">Cámaras</h2>
+  <div class="grid" id="camaras"></div>
 </div>
 
-<h2 class="section-title">Computadoras</h2>
-<div class="grid" id="products"></div>
-
-<h2 class="section-title">Audífonos</h2>
-<div class="grid" id="audio"></div>
-
-<h2 class="section-title">Teclados</h2>
-<div class="grid" id="teclados"></div>
-
-<h2 class="section-title">Cámaras</h2>
-<div class="grid" id="camaras"></div>
-
-</div>
-
-<div class="cart" id="cart">
+<!-- CARRITO -->
+<div class="panel" id="cart">
   <h2>Carrito</h2>
   <div id="cart-items"></div>
   <h3>Total: L. <span id="total">0</span></h3>
 </div>
 
+<!-- FAVORITOS -->
+<div class="panel" id="favs">
+  <h2>Favoritos</h2>
+  <div id="fav-items"></div>
+</div>
+
 <script>
 
-let cart = [];
+// DATOS
+const productos = {
+computadoras:[
+{name:"HP 15",price:12500,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8"},
+{name:"Lenovo IdeaPad 3",price:14000,img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853"},
+{name:"Dell Inspiron 15",price:15500,img:"https://images.unsplash.com/photo-1518770660439-4636190af475"},
+{name:"Acer Aspire 5",price:13800,img:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7"},
+{name:"ASUS VivoBook",price:16000,img:"https://images.unsplash.com/photo-1492724441997-5dc865305da7"},
+{name:"MacBook Air",price:28000,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8"}
+],
+audio:[
+{name:"JBL Tune 510BT",price:1500,img:"https://images.unsplash.com/photo-1518441902110-09d8d93c9b47"},
+{name:"Sony WH-CH520",price:1800,img:"https://images.unsplash.com/photo-1518444028785-8c7a5c4e64fa"},
+{name:"AirPods 2",price:3800,img:"https://images.unsplash.com/photo-1585386959984-a41552231658"},
+{name:"Redragon Hylas",price:1200,img:"https://images.unsplash.com/photo-1580894894513-fd6c7e3b02c1"},
+{name:"Logitech G435",price:2500,img:"https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb"}
+],
+teclados:[
+{name:"Logitech K120",price:450,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8"},
+{name:"HP USB",price:600,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04"},
+{name:"Redragon Kumara",price:1400,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04"},
+{name:"Razer Cynosa",price:2000,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04"},
+{name:"Microsoft Wireless",price:1100,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04"}
+],
+camaras:[
+{name:"Logitech C270",price:850,img:"https://images.unsplash.com/photo-1519183071298-a2962ae0b2a7"},
+{name:"HP 320 FHD",price:1500,img:"https://images.unsplash.com/photo-1519183071298-a2962ae0b2a7"},
+{name:"LifeCam HD-3000",price:1200,img:"https://images.unsplash.com/photo-1519183071298-a2962ae0b2a7"},
+{name:"Hikvision Dome",price:1800,img:"https://images.unsplash.com/photo-1581090700227-1e8c7f49a8dc"},
+{name:"Dahua Bullet",price:2100,img:"https://images.unsplash.com/photo-1581090700227-1e8c7f49a8dc"},
+{name:"TP-Link Tapo C200",price:1300,img:"https://images.unsplash.com/photo-1581090700227-1e8c7f49a8dc"}
+]
+};
 
-function addToCart(name, price){
-  cart.push({name, price});
-  renderCart();
+// CARRITO
+let cart=[];
+function addToCart(name,price){
+cart.push({name,price});
+renderCart();
 }
-
 function renderCart(){
-  let container = document.getElementById("cart-items");
-  let total = 0;
-  container.innerHTML = "";
-
-  cart.forEach(item=>{
-    total += item.price;
-    container.innerHTML += `<div class="cart-item">${item.name} - L.${item.price}</div>`;
-  });
-
-  document.getElementById("total").innerText = total;
+let html="",total=0;
+cart.forEach(i=>{total+=i.price; html+=`<p>${i.name} - L.${i.price}</p>`});
+document.getElementById("cart-items").innerHTML=html;
+document.getElementById("total").innerText=total;
 }
-
 function toggleCart(){
-  let cartDiv = document.getElementById("cart");
-  cartDiv.style.display = cartDiv.style.display === "block" ? "none" : "block";
+let c=document.getElementById("cart");
+c.style.display=c.style.display==="block"?"none":"block";
 }
 
-function createCard(product){
-  return `
-  <div class="card">
-    <img src="https://via.placeholder.com/150">
-    <h4>${product.name}</h4>
-    <div class="price">L. ${product.price}</div>
-    <div class="discount">${product.discount}</div>
-    <button onclick="addToCart('${product.name}', ${product.price})">Comprar</button>
-    <button onclick="alert('Añadido a favoritos')">❤️</button>
-  </div>`;
+// FAVORITOS
+function toggleFav(name,price,img){
+let favs=JSON.parse(localStorage.getItem("favs"))||[];
+let i=favs.findIndex(f=>f.name===name);
+if(i>-1){favs.splice(i,1);}else{favs.push({name,price,img});}
+localStorage.setItem("favs",JSON.stringify(favs));
+load();
+}
+function toggleFavPanel(){
+let f=document.getElementById("favs");
+f.style.display=f.style.display==="block"?"none":"block";
+renderFavs();
+}
+function renderFavs(){
+let favs=JSON.parse(localStorage.getItem("favs"))||[];
+let html="";
+favs.forEach(i=>{
+html+=`<p><img src="${i.img}" width="40"> ${i.name} L.${i.price}</p>`;
+});
+document.getElementById("fav-items").innerHTML=html||"Sin favoritos";
 }
 
-const productos = [
-  {name:"HP 15", price:12500, discount:"-10%"},
-  {name:"Lenovo IdeaPad 3", price:14000, discount:"-12%"},
-  {name:"Dell Inspiron 15", price:15500, discount:"-8%"},
-  {name:"Acer Aspire 5", price:13800, discount:"-15%"},
-  {name:"ASUS VivoBook", price:16000, discount:"-10%"},
-  {name:"MacBook Air", price:28000, discount:"-5%"}
-];
+// CARD
+function createCard(p){
+let favs=JSON.parse(localStorage.getItem("favs"))||[];
+let isFav=favs.find(f=>f.name===p.name);
 
-const audio = [
-  {name:"JBL Tune 510BT", price:1500, discount:"-10%"},
-  {name:"Sony WH-CH520", price:1800, discount:"-12%"},
-  {name:"AirPods 2", price:3800, discount:"-8%"},
-  {name:"Redragon Hylas", price:1200, discount:"-15%"},
-  {name:"Logitech G435", price:2500, discount:"-10%"}
-];
+return `
+<div class="card">
+<img src="${p.img}">
+<h4>${p.name}</h4>
+<p>L.${p.price}</p>
+<button onclick="addToCart('${p.name}',${p.price})">Comprar</button>
+<button onclick="toggleFav('${p.name}',${p.price}','${p.img}')" 
+style="background:${isFav?'red':'#6cf'}">❤️</button>
+</div>`;
+}
 
-const teclados = [
-  {name:"Logitech K120", price:450, discount:"-5%"},
-  {name:"HP USB", price:600, discount:"-10%"},
-  {name:"Redragon Kumara", price:1400, discount:"-12%"},
-  {name:"Razer Cynosa", price:2000, discount:"-10%"},
-  {name:"Microsoft Wireless", price:1100, discount:"-8%"}
-];
-
-const camaras = [
-  {name:"Logitech C270", price:850, discount:"-10%"},
-  {name:"HP 320 FHD", price:1500, discount:"-10%"},
-  {name:"LifeCam HD-3000", price:1200, discount:"-12%"},
-  {name:"Hikvision Dome", price:1800, discount:"-15%"},
-  {name:"Dahua Bullet", price:2100, discount:"-10%"},
-  {name:"TP-Link Tapo C200", price:1300, discount:"-8%"}
-];
-
+// LOAD
 function load(){
-  document.getElementById("products").innerHTML = productos.map(createCard).join("");
-  document.getElementById("audio").innerHTML = audio.map(createCard).join("");
-  document.getElementById("teclados").innerHTML = teclados.map(createCard).join("");
-  document.getElementById("camaras").innerHTML = camaras.map(createCard).join("");
+document.getElementById("computadoras").innerHTML=productos.computadoras.map(createCard).join("");
+document.getElementById("audio").innerHTML=productos.audio.map(createCard).join("");
+document.getElementById("teclados").innerHTML=productos.teclados.map(createCard).join("");
+document.getElementById("camaras").innerHTML=productos.camaras.map(createCard).join("");
 }
-
 load();
 
-document.getElementById("search").addEventListener("input", function(){
-  let value = this.value.toLowerCase();
-  let all = [...productos, ...audio, ...teclados, ...camaras];
-
-  let results = all.filter(p => p.name.toLowerCase().includes(value));
-  document.getElementById("products").innerHTML = results.map(createCard).join("");
+// BUSCADOR
+document.getElementById("search").addEventListener("input",function(){
+let val=this.value.toLowerCase();
+let all=[...productos.computadoras,...productos.audio,...productos.teclados,...productos.camaras];
+let res=all.filter(p=>p.name.toLowerCase().includes(val));
+document.getElementById("computadoras").innerHTML=res.map(createCard).join("");
 });
-
 </script>
 
 </body>
