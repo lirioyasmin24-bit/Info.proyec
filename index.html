@@ -125,33 +125,83 @@ button{
 
   <h2 class="section-title">Teclados</h2>
   <div class="grid" id="teclados"></div>
+ <h2 class="section-title">Mouse</h2>
+<div class="grid">
+
+  <div class="card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ13Jf0cJstfonp8z7pNqIv5KCL55iqXBhOHA&s">
+    <h4>Logitech G203</h4>
+    <p>Mouse gamer preciso y ligero.</p>
+    <button onclick="addToCart('Logitech G203',850)">Comprar</button>
+    <button onclick="toggleFav('Logitech G203',850,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ13Jf0cJstfonp8z7pNqIv5KCL55iqXBhOHA&s')">❤️</button>
+  </div>
+
+  <div class="card">
+    <img src="https://i5.walmartimages.com/seo/Razer-DeathAdder-Essential-Wired-Optical-Gaming-Mouse-for-PC-5-Buttons-Black_318e8fbf-fb2c-4abe-938e-e880a048da19.04fb37fa416bdd014d7178ea776c7054.png">
+    <h4>Razer DeathAdder</h4>
+    <p>Alta precisión para gaming profesional.</p>
+    <button onclick="addToCart('Razer DeathAdder',1200)">Comprar</button>
+    <button onclick="toggleFav('Razer DeathAdder',1200,'https://i5.walmartimages.com/seo/Razer-DeathAdder-Essential-Wired-Optical-Gaming-Mouse-for-PC-5-Buttons-Black_318e8fbf-fb2c-4abe-938e-e880a048da19.04fb37fa416bdd014d7178ea776c7054.png')">❤️</button>
+  </div>
+
+  <div class="card">
+    <img src="https://redragon.es/content/uploads/2021/04/CETROPHORUS-RGB.png">
+    <h4>Redragon M601</h4>
+    <p>Mouse gamer económico y potente.</p>
+    <button onclick="addToCart('Redragon M601',600)">Comprar</button>
+    <button onclick="toggleFav('Redragon M601',600,'https://redragon.es/content/uploads/2021/04/CETROPHORUS-RGB.png')">❤️</button>
+  </div>
+
+  <div class="card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS07N1ZvNaB4dfoTjsdFf6AoLB7ej4nfjcYKg&s">
+    <h4>HP X1000</h4>
+    <p>Mouse básico para oficina y estudio.</p>
+    <button onclick="addToCart('HP X1000',450)">Comprar</button>
+    <button onclick="toggleFav('HP X1000',450,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS07N1ZvNaB4dfoTjsdFf6AoLB7ej4nfjcYKg&s')">❤️</button>
+  </div>
+
+  <div class="card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc8CKozh4n5pLAeFll77UjYgHZOK7B-52rLw&s">
+    <h4>Corsair Harpoon</h4>
+    <p>Diseño ergonómico y rápido.</p>
+    <button onclick="addToCart('Corsair Harpoon',1100)">Comprar</button>
+    <button onclick="toggleFav('Corsair Harpoon',1100,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc8CKozh4n5pLAeFll77UjYgHZOK7B-52rLw&s')">❤️</button>
+  </div>
+
+</div>
+</div>
 
   <h2 class="section-title">Cámaras</h2>
   <div class="grid" id="camaras"></div>
 </div>
-  <h2 class="section-title">Impresoras</h2>
+<h2 class="section-title">Impresoras</h2>
 <div class="grid">
 
   <div class="card">
     <img src="https://utilesdehonduras.com/wp-content/uploads/2021/07/4003089.jpg">
     <h4>HP DeskJet</h4>
     <p>Impresora básica para hogar.</p>
-    <button>Comprar</button>
+    <button onclick="addToCart('HP DeskJet',1200)">Comprar</button>
+    <button onclick="toggleFav('HP DeskJet',1200,'https://utilesdehonduras.com/wp-content/uploads/2021/07/4003089.jpg')">❤️</button>
   </div>
 
   <div class="card">
     <img src="https://walmarthn.vtexassets.com/arquivos/ids/523104/20950_01.jpg?v=638664611541530000">
     <h4>Epson EcoTank</h4>
     <p>Alta eficiencia y bajo costo de tinta.</p>
-    <button>Comprar</button>
+    <button onclick="addToCart('Epson EcoTank',2500)">Comprar</button>
+    <button onclick="toggleFav('Epson EcoTank',2500,'https://walmarthn.vtexassets.com/arquivos/ids/523104/20950_01.jpg?v=638664611541530000')">❤️</button>
   </div>
 
   <div class="card">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaWizIL4GbbpeOMM8ZmRHcSiKHn5U4meMeiw&s">
     <h4>Brother Laser</h4>
     <p>Impresión rápida profesional.</p>
-    <button>Comprar</button>
+    <button onclick="addToCart('Brother Laser',3000)">Comprar</button>
+    <button onclick="toggleFav('Brother Laser',3000,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaWizIL4GbbpeOMM8ZmRHcSiKHn5U4meMeiw&s')">❤️</button>
   </div>
+
+</div>
 
 </div>
 
@@ -206,26 +256,26 @@ computadoras:[
 {name:"MacBook Air",price:28000,img:"https://jetstereo-retail.s3.us-east-2.amazonaws.com/images/catalog/public/products/product_MLXW3E_A_687109f650473.webp"}
 ],
 audio:[
-{name:"JBL Tune 510BT",price:1500,img:"https://images.unsplash.com/photo-1518441902110-09d8d93c9b47"},
-{name:"Sony WH-CH520",price:1800,img:"https://images.unsplash.com/photo-1518444028785-8c7a5c4e64fa"},
-{name:"AirPods 2",price:3800,img:"https://images.unsplash.com/photo-1585386959984-a41552231658"},
-{name:"Redragon Hylas",price:1200,img:"https://images.unsplash.com/photo-1580894894513-fd6c7e3b02c1"},
+{name:"JBL Tune 510BT",price:1500,img:"https://jetstereo-retail.s3.us-east-2.amazonaws.com/images/cache/catalog/public/products/product_JBL_T510BT_BLU_6870f3d666b06-350x350.webp"},
+{name:"Sony WH-CH520",price:1800,img:"https://jetstereo-retail.s3.us-east-2.amazonaws.com/images/cache/catalog/public/products/product_WH_CH520_BZ_6871009882459-1200x1200.webp"},
+{name:"AirPods 2",price:3800,img:"https://jetstereo-retail.s3.us-east-2.amazonaws.com/images/catalog/public/products/product_MME73AM_A_6870f48680741.webp"},
+{name:"Redragon Hylas",price:1200,img:"https://jetstereo-retail.s3.us-east-2.amazonaws.com/images/cache/catalog/public/products/product_H260RGB_6870e9f148fbd-1200x1200.webp"},
 {name:"Logitech G435",price:2500,img:"https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb"}
 ],
 teclados:[
-{name:"Logitech K120",price:450,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8"},
-{name:"HP USB",price:600,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04"},
-{name:"Redragon Kumara",price:1400,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04"},
-{name:"Razer Cynosa",price:2000,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04"},
-{name:"Microsoft Wireless",price:1100,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04"}
+{name:"Logitech K120",price:450,img:"https://jetstereo-retail.s3.us-east-2.amazonaws.com/images/cache/catalog/public/products/product_920_004428_6870fb6e2bf9c-1200x1200.webp"},
+{name:"HP USB",price:600,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv4m_ttsj8PUKQwvKA7nIORx-6crJs7S9yzA&s"},
+{name:"Redragon Kumara",price:1400,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxo4hKdGepXQ5Hap5NxRMKCwZFC5eGfS1sng&s"},
+{name:"Razer Cynosa",price:2000,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd5-wpDf7en8GouZGqSxjUyp-U6brDtaz0Ag&s"},
+{name:"Microsoft Wireless",price:1100,img:"https://i5.walmartimages.com/seo/Microsoft-MS-Bluetooth-Keyboard-Bluetooth-English-Black-US-Canada-1-License_dc5ee80c-f9c4-48ac-9880-448f814ae747_1.85d750e2bedd2f46097b4660abc1953a.jpeg"}
 ],
 camaras:[
-{name:"Logitech C270",price:850,img:"https://images.unsplash.com/photo-1519183071298-a2962ae0b2a7"},
-{name:"HP 320 FHD",price:1500,img:"https://images.unsplash.com/photo-1519183071298-a2962ae0b2a7"},
-{name:"LifeCam HD-3000",price:1200,img:"https://www.pinterest.com/pin/4602115988622083712/"},
-{name:"Hikvision Dome",price:1800,img:"https://images.unsplash.com/photo-1581090700227-1e8c7f49a8dc"},
-{name:"Dahua Bullet",price:2100,img:"https://images.unsplash.com/photo-1581090700227-1e8c7f49a8dc"},
-{name:"TP-Link Tapo C200",price:1300,img:"https://images.unsplash.com/photo-1581090700227-1e8c7f49a8dc"}
+{name:"Logitech C270",price:850,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfBOk1f62F5eY2TAPZ8GUSl_CtxFZHhmS2Gw&s"},
+{name:"HP 320 FHD",price:1500,img:"https://m.media-amazon.com/images/I/51FdkCKMRML._AC_UF894,1000_QL80_.jpg"},
+{name:"LifeCam HD-3000",price:1200,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhfwuIxICYrlkjAMp9egAVODQiu_TZUJ6Krg&s"},
+{name:"Hikvision Dome",price:1800,img:"https://www.skyteksecurity.hn/cdn/shop/files/2-2026-02-16T165744.966.png?v=1771282691&width=2048"},
+{name:"Dahua Bullet",price:2100,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBDsfRBgj7Y2_DDYJGAck1muu0NoWYnYN7jQ&s"},
+{name:"TP-Link Tapo C200",price:1300,img:"https://jetstereo-retail.s3.us-east-2.amazonaws.com/images/catalog/public/products/product_TAPO_C200_6870f76e29018.webp"}
 ]
 };
 // CARRITO
